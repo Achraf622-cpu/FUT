@@ -14,7 +14,7 @@ async function fetchPlayers() {
   }
 }
 
-// Populate the modal with player data
+
 async function showPlayers() {
     const playersData = await fetchPlayers();
     playersList.innerHTML = ''; 
@@ -24,19 +24,25 @@ async function showPlayers() {
       playerCard.className = 'player-card';
   
       playerCard.innerHTML = `
-        <div class="rating-badge text-xl ml-5 mt-6">${player.rating}</div>
-        <img src="${player.photo}" alt="${player.name}">
-        <h3>${player.name}</h3>
+        <div class="grid grid-cols-1 grid-rows-1">
+        <div class="relative w-[125px] h-[125px]">
+          <img src="src/000.png" alt="Back Image" class="absolute w-full h-full opacity-50 top-0 left-0">
+          <h1 class="absolute font-bold z-10 top-2 left-2 ">${player.rating}</h1>
+          <img src="${player.photo}" alt="Player Image" class="relative z-20 w-full h-full">
+        </div>
+        <div">
+          <h1>${player.name}</h1>
+        </div>
       `;
   
       playersList.appendChild(playerCard);
     });
   }
+  showPlayers();
 
 
 faceCards.forEach(card => {
   card.addEventListener('click', () => {
-    showPlayers();
     playersModal.classList.remove('hidden'); 
   });
 });
