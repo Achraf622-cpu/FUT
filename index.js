@@ -19,9 +19,12 @@ async function fetchPlayers() {
 async function showPlayers() {
     const playersData = await fetchPlayers();
     playersList.innerHTML = ''; 
+
+    const availablePlayers = playersData.players.filter(
+      player => !selectedPlayers.has(player.name)
+    );
     
-    playersData.players.filter(player => !selectedPlayers.has(player.name))
-    playersData.players.forEach(player => {
+    availablePlayers.forEach(player => {
       const playerCard = document.createElement('div');
       playerCard.className = 'player-card cursor-pointer p-2 hover:bg-gray700 rounded';
   
