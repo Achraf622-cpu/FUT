@@ -63,7 +63,9 @@ async function showPlayers() {
 
 faceCards.forEach(card => {
   card.addEventListener('click', () => {
+    selectedPositionCard = card;
     playersModal.classList.remove('hidden'); 
+    showPlayers();
   });
 });
 
