@@ -3,8 +3,10 @@ const faceCards = document.querySelectorAll('.faceCard');
 const playersModal = document.getElementById('playersModal');
 const closeModal = document.getElementById('closeModal');
 const playersList = document.getElementById('playersList');
+const ratingSpan = document.querySelector('span');
 let selectedPositionCard = null;
 let selectedPlayers = new Set();
+let playerRatings = [];
 
 async function fetchPlayers() {
   try {
@@ -62,9 +64,26 @@ async function showPlayers() {
 
     `;
     selectedPlayers.add(player.name);
+    playerRatings.push(player.rating);
+    updateTeamRating();
     selectedPositionCard = null;
   }
 
+  function updateTeamRating() {
+    if (playerRatings.length === 0) return 0;
+    const totalRating = playerRatings.reduce((sum, rating) => sum + rating, 0);
+    const averageRating = totalRating /playerRatings.length;
+
+    ratingSpan.textContent = averageRating.toFixed(1);
+
+    if(averageRating > 85) {
+      ratingSpan.classList.add('text-green-500');
+    } else if (averageRating <= 85 && averageRating >= 80 ){
+      ratingSpan.classList.add('text-orange-500');
+    } else {
+      ratingSpan.classList.add('text-red-500');
+    }
+  }
 
 faceCards.forEach(card => {
   card.addEventListener('click', () => {
