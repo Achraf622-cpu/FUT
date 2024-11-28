@@ -72,9 +72,10 @@ async function showPlayers() {
   function updateTeamRating() {
     if (playerRatings.length === 0) return 0;
     const totalRating = playerRatings.reduce((sum, rating) => sum + rating, 0);
-    const averageRating = totalRating /playerRatings.length;
+    const averageRating = totalRating / playerRatings.length;
+    const roundedRating = Math.round(averageRating);
 
-    ratingSpan.textContent = averageRating.toFixed(1);
+    ratingSpan.textContent = roundedRating;
 
     if(averageRating > 85) {
       ratingSpan.classList.add('text-green-500');
