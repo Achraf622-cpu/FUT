@@ -4,10 +4,10 @@ var faceCards = document.querySelectorAll('.faceCard');
 var playersModal = document.getElementById('playersModal');
 var closeModal = document.getElementById('closeModal');
 var playersList = document.getElementById('playersList');
-var ratingSpan = document.querySelector('span');
+var asideFaceCards = document.querySelectorAll('.aside .faceCard');
+var removePlayerButton = document.getElementById('removePlayer');
 var selectedPositionCard = null;
 var selectedPlayers = new Set();
-var playerRatings = [];
 
 function fetchPlayers() {
   var response;
@@ -58,7 +58,7 @@ function showPlayers() {
           availablePlayers.forEach(function (player) {
             var playerCard = document.createElement('div');
             playerCard.className = 'player-card cursor-pointer p-2 hover:bg-gray700 rounded';
-            playerCard.innerHTML = "\n        <div class=\"grid grid-cols-1 grid-rows-1\">\n        <div class=\"relative w-[125px] h-[125px]\">\n          <img src=\"src/000.png\" alt=\"Back Image\" class=\"absolute w-full h-full opacity-50 top-0 left-0\">\n          <h1 class=\"absolute font-bold z-10 top-2 left-2 \">".concat(player.rating, "</h1>\n          <img src=\"").concat(player.photo, "\" alt=\"Player Image\" class=\"relative z-20 w-full h-full\">\n        </div>\n        <div>\n          <h1>").concat(player.name, "</h1>\n        </div>\n        </div>\n      ");
+            playerCard.innerHTML = "\n      <div class=\"grid grid-cols-1 grid-rows-1\">\n        <div class=\"relative w-[125px] h-[125px]\">\n          <img src=\"src/000.png\" alt=\"Back Image\" class=\"absolute w-full h-full opacity-50 top-0 left-0\">\n          <h1 class=\"absolute font-bold z-10 top-2 left-2 \">".concat(player.rating, "</h1>\n          <img src=\"").concat(player.photo, "\" alt=\"Player Image\" class=\"relative z-20 w-full h-full\">\n        </div>\n        <div>\n          <h1>").concat(player.name, "</h1>\n        </div>\n      </div>\n    ");
             playerCard.addEventListener('click', function () {
               assignPlayerToPosition(player);
               playersModal.classList.add('hidden');
@@ -77,43 +77,35 @@ function showPlayers() {
 function assignPlayerToPosition(player) {
   if (selectedPositionCard.dataset.playerName) {
     var previousPlayerName = selectedPositionCard.dataset.playerName;
-    selectedPlayers["delete"](selectedPositionCard.dataset.playerName);
-    var previousPlayerIndex = playerRatings.findIndex(function (rating) {
-      return rating.name == previousPlayerName;
-    });
-
-    if (previousPlayerIndex !== -1) {
-      playerRatings.splice(previousPlayerIndex, 1);
-    }
+    selectedPlayers["delete"](previousPlayerName);
   }
 
   selectedPlayers.add(player.name);
-  playerRatings.push(player.rating);
-  selectedPositionCard.innerHTML = "\n   <div class=\"relative flex flex-col items-center justify-center\">\n  <img src=\"src/000.png\" alt=\"\" class=\"w-20 h-20 z-0 opacity-50\">\n  <img src=\"".concat(player.photo, "\" alt=\"\" class=\"absolute w-16 h-16 z-10 mb-4\">\n  <h1 class=\"absolute top-1 right-1 text-sm font-bold bg-white text-black px-1 rounded z-20\">").concat(player.rating, "</h1>\n  <h1 class=\"text-center mt-1 text-sm font-semibold z-20\">").concat(player.name, "</h1>\n</div>\n\n    ");
+  selectedPositionCard.innerHTML = "\n    <div class=\"relative flex flex-col items-center justify-center\">\n      <img src=\"src/000.png\" alt=\"\" class=\"w-20 h-20 z-0 opacity-50\">\n      <img src=\"".concat(player.photo, "\" alt=\"\" class=\"absolute w-16 h-16 z-10 mb-4\">\n      <h1 class=\"absolute top-1 right-1 text-sm font-bold bg-white text-black px-1 rounded z-20\">").concat(player.rating, "</h1>\n      <h1 class=\"text-center mt-1 text-sm font-semibold z-20\">").concat(player.name, "</h1>\n    </div>\n  ");
   selectedPositionCard.dataset.playerName = player.name;
   selectedPositionCard = null;
-  updateTeamRating();
 }
 
-function updateTeamRating() {
-  if (playerRatings.length === 0) return 0;
-  var totalRating = playerRatings.reduce(function (sum, rating) {
-    return sum + rating;
-  }, 0);
-  var averageRating = totalRating / playerRatings.length;
-  var roundedRating = Math.round(averageRating);
-  ratingSpan.textContent = roundedRating;
+removePlayerButton.addEventListener('click', function () {
+  if (!selectedPositionCard) return;
+  var playerName = selectedPositionCard.dataset.playerName;
 
-  if (averageRating > 85) {
-    ratingSpan.classList.add('text-green-500');
-  } else if (averageRating <= 85 && averageRating >= 80) {
-    ratingSpan.classList.add('text-orange-500');
-  } else {
-    ratingSpan.classList.add('text-red-500');
+  if (playerName) {
+    selectedPlayers["delete"](playerName);
+    selectedPositionCard.innerHTML = "\n      <div class=\"relative flex flex-col items-center justify-center\">\n        <img src=\"src/000.png\" alt=\"\" class=\"w-20 h-20 z-0 opacity-50\">\n      </div>\n    ";
+    delete selectedPositionCard.dataset.playerName;
+    selectedPositionCard = null;
+    playersModal.classList.add('hidden');
   }
-}
-
+});
 faceCards.forEach(function (card) {
+  card.addEventListener('click', function () {
+    selectedPositionCard = card;
+    playersModal.classList.remove('hidden');
+    showPlayers();
+  });
+});
+asideFaceCards.forEach(function (card) {
   card.addEventListener('click', function () {
     selectedPositionCard = card;
     playersModal.classList.remove('hidden');
