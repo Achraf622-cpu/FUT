@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fut Like</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .blended-bg {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, black 100%), url('src/https___cdn.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 20vh; 
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <header class="bg-black text-white">
+    <div class="flex items-center justify-between px-4 py-3 max-w-7xl mx-auto">
+      <div class="flex items-center space-x-4">
+        <svg class="w-8 h-8 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4V20M4 12H20" />
+        </svg>
+        <h1 class="text-2xl font-bold"><a href="index.html">FUT LIKE</a></h1>
+      </div>
+      <nav class="flex space-x-6">
+        <a href="players.html" class="text-green-300 hover:text-white transition">Players</a>
+      </nav>
+      <div class="relative w-64">
+        <div class="flex items-center bg-gray-700 border border-gray-600 rounded-lg shadow-md">
+          <svg class="w-5 h-5 text-gray-400 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search players..."
+            id="searchInput"
+            class="flex-1 px-2 py-1 bg-transparent text-gray-300 placeholder-gray-400 focus:outline-none text-sm"
+          />
+        </div>
+      </div>
+    </div>
+    <hr>
+  </header>
+
+  <div class="blended-bg opacity-55"> 
+    <div>
+      <h1 class="font-bold text-lg px-4">EA FC 25 Tactics & Formations</h1>
+      <h3 class="text-sm px-4">Build Custom Tactics & Formations</h3>
+    </div>
+  </div>
+
+  
+  <section id="playersContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+    
+  </section>
+
+  <script src="players.js"></script>
+</body>
+</html>

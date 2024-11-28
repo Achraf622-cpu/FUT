@@ -52,7 +52,18 @@ async function showPlayers() {
   }
  
   function assignPlayerToPosition(player) {
-    if (!selectedPositionCard) return;
+
+    if(selectedPositionCard.dataset.playerName) {
+      const previousPlayerName = selectedPositionCard.dataset.playerName;
+      selectedPlayers.delete(selectedPositionCard.dataset.playerName);
+    
+    const previousPlayerIndex = playerRatings.findIndex(rating => rating.name == previousPlayerName);
+    if (previousPlayerIndex !== -1) {
+      playerRatings.splice(previousPlayerIndex, 1);
+    }
+  }
+    selectedPlayers.add(player.name);
+    playerRatings.push(player.rating);
 
     selectedPositionCard.innerHTML=`
    <div class="relative flex flex-col items-center justify-center">
@@ -63,10 +74,9 @@ async function showPlayers() {
 </div>
 
     `;
-    selectedPlayers.add(player.name);
-    playerRatings.push(player.rating);
+   selectedPositionCard.dataset.playerName = player.name;
+    selectedPositionCard = null; 
     updateTeamRating();
-    selectedPositionCard = null;
   }
 
   function updateTeamRating() {
