@@ -92,7 +92,7 @@ removePlayerButton.addEventListener('click', function () {
 
   if (playerName) {
     selectedPlayers["delete"](playerName);
-    selectedPositionCard.innerHTML = "\n      <div class=\"relative flex flex-col items-center justify-center\">\n        <img src=\"src/000.png\" alt=\"\" class=\"w-20 h-20 z-0 opacity-50\">\n      </div>\n    ";
+    selectedPositionCard.innerHTML = "<div class=\"faceCard\">\n      <img src=\"src/000.png\"  alt=\"Back Image\" class=\"absolute w-20 h-20 z-0 opacity-50\"/>\n      <img src=\"src/0_.png\" alt=\"Front Image\" class=\"relative w-16 h-16 z-10 ml-2\"/>\n      </div>\n    ";
     delete selectedPositionCard.dataset.playerName;
     selectedPositionCard = null;
     playersModal.classList.add('hidden');

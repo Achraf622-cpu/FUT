@@ -23,6 +23,36 @@
       width: 70%;
       height: 41em;
     }
+    @media (max-width: 1186px) {
+  /* .ASIDE {
+    display: none;
+  } */
+
+}
+
+  @media (max-width:500px){
+    .terrain {
+    margin-left: 50px;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat(4, 66px);
+    grid-template-rows: repeat(4, 67px);
+    width: 70%;
+    height: 41em;
+}
+.w-20 {
+    width: 3rem !important;
+}
+.h-20 {
+    height: 3rem !important;
+}
+.w-16 {
+    width: 3rem !important;
+}
+.h-16 {
+    height: 3rem !important;
+}
+  }
     
   </style>
 </head>
@@ -64,7 +94,9 @@
   </div>
 </div>
 
-<aside class="max-w-[300px] w-full h-full absolute right-14 top-[150px] z-10 rounded-sm border-white">
+
+
+<aside class="max-w-[300px] w-full h-full absolute  z-10 rounded-sm border-white  hidden">
   <div class="topAjoute h-[10%] flex justify-center items-center mb-5">
     <button class="w-[160px] h-[45px] bg-transparent text-lg font-semibold rounded-[5px] border-2">Reserve Players</button>
   </div>
@@ -116,7 +148,7 @@
     </div>
   </div> -->
 
-    <img src="src/field-bg.png" alt="" class="absolute">
+    <img src="src/field-bg.png" alt="" class="absolute ">
   <div class="terrain  ">
    
     <div id="" class="relative # flex items-center justify-center hidden">
@@ -193,14 +225,55 @@
         <button id="closeModal" class="text-red-500 text-lg font-bold">X</button>
       </div>
       <hr>
-      <div id="playersList" class="grid grid-cols-[repeat(5,_150px)] gap-1 mt-4"></div>
+      <div id="playersList" class="grid grid-cols-[repeat(5,_150px)] gap-1 mt-4 max-[402px]:flex max-[402px]:flex-wrap max-[402px]:justify-center"></div>
       <button id="removePlayer" class="w-[160px] h-[45px] bg-transparent text-orangeColor text-lg font-semibold rounded-[5px] border-2 border-orangeColor hover:bg-red-500 hover:text-black duration-150">
         Remove Player
       </button>
     </div>
   </div>
   
-
+  <aside class="max-w-[300px] w-full h-full absolute right-14 top-[150px] z-10 rounded-sm border-white ASIDE max-[1186px]:static max-[1186px]:max-w-full">
+    <div class="topAjoute h-[10%] flex justify-center items-center mb-5">
+      <button class="w-[160px] h-[45px] bg-transparent text-lg font-semibold rounded-[5px] border-2">Reserve Players</button>
+    </div>
+    <div class="players w-full h-[84%] flex flex-col items-center gap-2 p-2 mt-2 bg-[#28282879] rounded-[5px] overflow-y-auto max-[1186px]:p-10">
+      <div class="grid grid-cols-2 grid-rows-4 gap-12 max-[1186px]:flex max-[1186px]:flex-wrap max-[1186px]:justify-center">
+        <div class="faceCard">
+          <img src="src/000.png" alt="" class="absolute w-[100px] h-[100px] z-0 opacity-50">
+          <img src="src/0_.png" alt="" class="relative w-[100px] h-[100px] z-10">
+        </div>
+        <div class="faceCard">
+          <img src="src/000.png" alt="" class="absolute w-[100px] h-[100px] z-0 opacity-50">
+          <img src="src/0_.png" alt="" class="relative w-[100px] h-[100px] z-10">
+        </div>
+        <div class="faceCard">
+          <img src="src/000.png" alt="" class="absolute w-[100px] h-[100px] z-0 opacity-50">
+          <img src="src/0_.png" alt="" class="relative w-[100px] h-[100px] z-10">
+        </div>
+        <div class="faceCard">
+          <img src="src/000.png" alt="" class="absolute w-[100px] h-[100px] z-0 opacity-50">
+          <img src="src/0_.png" alt="" class="relative w-[100px] h-[100px] z-10">
+        </div>
+        <div class="faceCard">
+          <img src="src/000.png" alt="" class="absolute w-[100px] h-[100px] z-0 opacity-50">
+          <img src="src/0_.png" alt="" class="relative w-[100px] h-[100px] z-10">
+        </div>
+        <div class="faceCard">
+          <img src="src/000.png" alt="" class="absolute w-[100px] h-[100px] z-0 opacity-50">
+          <img src="src/0_.png" alt="" class="relative w-[100px] h-[100px] z-10">
+        </div>
+        <div class="faceCard">
+          <img src="src/000.png" alt="" class="absolute w-[100px] h-[100px] z-0 opacity-50">
+          <img src="src/0_.png" alt="" class="relative w-[100px] h-[100px] z-10">
+        </div>
+        <div class="faceCard">
+          <img src="src/000.png" alt="" class="absolute w-[100px] h-[100px] z-0 opacity-50">
+          <img src="src/0_.png" alt="" class="relative w-[100px] h-[100px] z-10">
+        </div>
+        
+      </div>
+    </div>
+  </aside>
 
   
 
