@@ -119,5 +119,34 @@ playersModal.addEventListener('click', function (event) {
   if (event.target === playersModal) {
     playersModal.classList.add('hidden');
   }
+}); // JavaScript to handle formation change
+
+var formationSelect = document.getElementById('formation');
+var playersWithFour = document.querySelectorAll('#Four');
+var playersWithThree = document.querySelectorAll('#Three'); // Set default visibility based on initial value of the select element
+
+var setVisibility = function setVisibility(formation) {
+  if (formation === '4-4-2') {
+    playersWithFour.forEach(function (player) {
+      return player.classList.remove('hidden');
+    });
+    playersWithThree.forEach(function (player) {
+      return player.classList.add('hidden');
+    });
+  } else if (formation === '4-3-3') {
+    playersWithFour.forEach(function (player) {
+      return player.classList.add('hidden');
+    });
+    playersWithThree.forEach(function (player) {
+      return player.classList.remove('hidden');
+    });
+  }
+}; // Initialize the default visibility
+
+
+setVisibility(formationSelect.value); // Add event listener for selection changes
+
+formationSelect.addEventListener('change', function (e) {
+  setVisibility(e.target.value);
 });
 showPlayers();
