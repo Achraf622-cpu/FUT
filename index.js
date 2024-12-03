@@ -60,9 +60,9 @@ function assignPlayerToPosition(player) {
   selectedPositionCard.innerHTML = `
     <div class="relative flex flex-col items-center justify-center">
       <img src="src/000.png" alt="" class="w-20 h-20 z-0 opacity-50">
-      <img src="${player.photo}" alt="" class="absolute w-16 h-16 z-10 mb-4">
+      <img src="${player.photo}" alt="" class="absolute w-16 h-16 z-10 mb-4  max-[402px]:w-[20px]  max-[402px]:h-[20px]">
       <h1 class="absolute top-1 right-1 text-sm font-bold bg-white text-black px-1 rounded z-20">${player.rating}</h1>
-      <h1 class="text-center mt-1 text-sm font-semibold z-20">${player.name}</h1>
+      <h1 class="text-center mt-1 text-sm font-semibold z-20  max-[402px]:text-[5px]">${player.name}</h1>
     </div>
   `;
 

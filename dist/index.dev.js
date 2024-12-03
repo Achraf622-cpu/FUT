@@ -81,7 +81,7 @@ function assignPlayerToPosition(player) {
   }
 
   selectedPlayers.add(player.name);
-  selectedPositionCard.innerHTML = "\n    <div class=\"relative flex flex-col items-center justify-center\">\n      <img src=\"src/000.png\" alt=\"\" class=\"w-20 h-20 z-0 opacity-50\">\n      <img src=\"".concat(player.photo, "\" alt=\"\" class=\"absolute w-16 h-16 z-10 mb-4\">\n      <h1 class=\"absolute top-1 right-1 text-sm font-bold bg-white text-black px-1 rounded z-20\">").concat(player.rating, "</h1>\n      <h1 class=\"text-center mt-1 text-sm font-semibold z-20\">").concat(player.name, "</h1>\n    </div>\n  ");
+  selectedPositionCard.innerHTML = "\n    <div class=\"relative flex flex-col items-center justify-center\">\n      <img src=\"src/000.png\" alt=\"\" class=\"w-20 h-20 z-0 opacity-50\">\n      <img src=\"".concat(player.photo, "\" alt=\"\" class=\"absolute w-16 h-16 z-10 mb-4  max-[402px]:w-[20px]  max-[402px]:h-[20px]\">\n      <h1 class=\"absolute top-1 right-1 text-sm font-bold bg-white text-black px-1 rounded z-20\">").concat(player.rating, "</h1>\n      <h1 class=\"text-center mt-1 text-sm font-semibold z-20  max-[402px]:text-[5px]\">").concat(player.name, "</h1>\n    </div>\n  ");
   selectedPositionCard.dataset.playerName = player.name;
   selectedPositionCard = null;
 }
