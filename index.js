@@ -16,19 +16,23 @@ async function fetchPlayers() {
   }
 }
 
-async function showPlayers() {
+async function showPlayers(getPosition) {
   const playersData = await fetchPlayers();
   playersList.innerHTML = '';
 
   const availablePlayers = playersData.players.filter(
     player => !selectedPlayers.has(player.name)
   );
+  console.log(availablePlayers)
+
 
   availablePlayers.forEach(player => {
-    const playerCard = document.createElement('div');
-    playerCard.className = 'player-card cursor-pointer p-2 hover:bg-gray700 rounded';
 
-    playerCard.innerHTML = `
+    if(getPosition){
+      const playerCard = document.createElement('div');
+    playerCard.className = 'player-card cursor-pointer p-2 hover:bg-gray700 rounded';
+    if(getPosition == player.position){
+      playerCard.innerHTML = `
       <div class="grid grid-cols-1 grid-rows-1">
         <div class="relative w-[125px] h-[125px]">
           <img src="src/000.png" alt="Back Image" class="absolute w-full h-full opacity-50 top-0 left-0">
@@ -40,12 +44,42 @@ async function showPlayers() {
         </div>
       </div>
     `;
+
     playerCard.addEventListener('click', () => {
       assignPlayerToPosition(player);
       playersModal.classList.add('hidden');
     });
 
     playersList.appendChild(playerCard);
+    }
+    }else{
+      const playerCard = document.createElement('div');
+    playerCard.className = 'player-card cursor-pointer p-2 hover:bg-gray700 rounded';
+    
+      playerCard.innerHTML = `
+      <div class="grid grid-cols-1 grid-rows-1">
+        <div class="relative w-[125px] h-[125px]">
+          <img src="src/000.png" alt="Back Image" class="absolute w-full h-full opacity-50 top-0 left-0">
+          <h1 class="absolute font-bold z-10 top-2 left-2 ">${player.rating}</h1>
+          <img src="${player.photo}" alt="Player Image" class="relative z-20 w-full h-full">
+        </div>
+        <div>
+          <h1>${player.name}</h1>
+        </div>
+      </div>
+    `;
+
+    playerCard.addEventListener('click', () => {
+      assignPlayerToPosition(player);
+      playersModal.classList.add('hidden');
+    });
+
+    playersList.appendChild(playerCard);
+    
+    }
+    
+    
+   
   });
 }
 
@@ -88,11 +122,12 @@ removePlayerButton.addEventListener('click', () => {
   }
 });
 
-faceCards.forEach(card => {
+faceCards.forEach((card) => {
   card.addEventListener('click', () => {
+  let getPosition = card.id;
     selectedPositionCard = card;
     playersModal.classList.remove('hidden');
-    showPlayers();
+    showPlayers(getPosition);
   });
 });
 

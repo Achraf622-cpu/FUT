@@ -40,7 +40,7 @@ function fetchPlayers() {
   }, null, null, [[0, 9]]);
 }
 
-function showPlayers() {
+function showPlayers(getPosition) {
   var playersData, availablePlayers;
   return regeneratorRuntime.async(function showPlayers$(_context2) {
     while (1) {
@@ -55,18 +55,36 @@ function showPlayers() {
           availablePlayers = playersData.players.filter(function (player) {
             return !selectedPlayers.has(player.name);
           });
+          console.log(availablePlayers);
           availablePlayers.forEach(function (player) {
-            var playerCard = document.createElement('div');
-            playerCard.className = 'player-card cursor-pointer p-2 hover:bg-gray700 rounded';
-            playerCard.innerHTML = "\n      <div class=\"grid grid-cols-1 grid-rows-1\">\n        <div class=\"relative w-[125px] h-[125px]\">\n          <img src=\"src/000.png\" alt=\"Back Image\" class=\"absolute w-full h-full opacity-50 top-0 left-0\">\n          <h1 class=\"absolute font-bold z-10 top-2 left-2 \">".concat(player.rating, "</h1>\n          <img src=\"").concat(player.photo, "\" alt=\"Player Image\" class=\"relative z-20 w-full h-full\">\n        </div>\n        <div>\n          <h1>").concat(player.name, "</h1>\n        </div>\n      </div>\n    ");
-            playerCard.addEventListener('click', function () {
-              assignPlayerToPosition(player);
-              playersModal.classList.add('hidden');
-            });
-            playersList.appendChild(playerCard);
+            if (getPosition) {
+              var playerCard = document.createElement('div');
+              playerCard.className = 'player-card cursor-pointer p-2 hover:bg-gray700 rounded';
+
+              if (getPosition == player.position) {
+                playerCard.innerHTML = "\n      <div class=\"grid grid-cols-1 grid-rows-1\">\n        <div class=\"relative w-[125px] h-[125px]\">\n          <img src=\"src/000.png\" alt=\"Back Image\" class=\"absolute w-full h-full opacity-50 top-0 left-0\">\n          <h1 class=\"absolute font-bold z-10 top-2 left-2 \">".concat(player.rating, "</h1>\n          <img src=\"").concat(player.photo, "\" alt=\"Player Image\" class=\"relative z-20 w-full h-full\">\n        </div>\n        <div>\n          <h1>").concat(player.name, "</h1>\n        </div>\n      </div>\n    ");
+                playerCard.addEventListener('click', function () {
+                  assignPlayerToPosition(player);
+                  playersModal.classList.add('hidden');
+                });
+                playersList.appendChild(playerCard);
+              }
+            } else {
+              var _playerCard = document.createElement('div');
+
+              _playerCard.className = 'player-card cursor-pointer p-2 hover:bg-gray700 rounded';
+              _playerCard.innerHTML = "\n      <div class=\"grid grid-cols-1 grid-rows-1\">\n        <div class=\"relative w-[125px] h-[125px]\">\n          <img src=\"src/000.png\" alt=\"Back Image\" class=\"absolute w-full h-full opacity-50 top-0 left-0\">\n          <h1 class=\"absolute font-bold z-10 top-2 left-2 \">".concat(player.rating, "</h1>\n          <img src=\"").concat(player.photo, "\" alt=\"Player Image\" class=\"relative z-20 w-full h-full\">\n        </div>\n        <div>\n          <h1>").concat(player.name, "</h1>\n        </div>\n      </div>\n    ");
+
+              _playerCard.addEventListener('click', function () {
+                assignPlayerToPosition(player);
+                playersModal.classList.add('hidden');
+              });
+
+              playersList.appendChild(_playerCard);
+            }
           });
 
-        case 6:
+        case 7:
         case "end":
           return _context2.stop();
       }
@@ -100,9 +118,10 @@ removePlayerButton.addEventListener('click', function () {
 });
 faceCards.forEach(function (card) {
   card.addEventListener('click', function () {
+    var getPosition = card.id;
     selectedPositionCard = card;
     playersModal.classList.remove('hidden');
-    showPlayers();
+    showPlayers(getPosition);
   });
 });
 asideFaceCards.forEach(function (card) {
