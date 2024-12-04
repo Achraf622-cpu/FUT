@@ -1,0 +1,72 @@
+# Application de Gestion d'Équipe FUT (Ultimate Team)
+
+## Contexte du Projet
+Cette application permet aux utilisateurs de créer leur propre équipe FUT en ajoutant, positionnant et modifiant les joueurs tout en respectant les formations tactiques comme **4-4-2** ou **4-3-3**. L'accent est mis sur une expérience utilisateur interactive grâce à des formulaires dynamiques et une gestion des données simplifiée.
+
+---
+
+## Fonctionnalités Clés
+
+### 1. **Intégration UI et Ajout Dynamique des Joueurs**
+- Formulaire pour l’ajout de joueurs avec des champs comme : nom, position, note, statistiques, etc.
+- Les joueurs sont positionnés en fonction de la formation tactique choisie (par ex. : **4-4-2**, **4-3-3**).
+
+### 2. **Positionnement des Joueurs Selon la Formation Tactique**
+- Chaque formation dispose de positions spécifiques :
+  - **Formation 4-4-2** :
+    - 1 GK, 2 CB, 1 LB, 1 RB, 2 CM, 1 RM, 1 LM, 2 ST.
+
+### 3. **Gestion des Cartes de Joueurs**
+- Ajout, modification et suppression des joueurs via une interface intuitive.
+- Limitation stricte à **11 joueurs** dans la formation principale ; les autres joueurs sont réservés pour des remplacements éventuels.
+
+### 4. **Validation des Champs des Formulaires**
+- Les champs de saisie (nom, position, note, etc.) sont validés pour garantir la cohérence et l’intégrité des données.
+
+### 5. **Formulaires Dynamiques pour la Gestion des Joueurs**
+- Permet d’ajouter ou de retirer des joueurs tout en respectant les règles des formations tactiques.
+
+### 6. **Responsive Design**
+- L’interface est optimisée pour différents appareils (desktop, tablette, mobile) afin de garantir une expérience utilisateur fluide.
+
+---
+
+## Technologies Utilisées
+- **HTML**
+- **CSS natif** ou framework CSS (par ex. Tailwind CSS, Bootstrap)
+- **JavaScript Vanilla** (DOM natif)
+
+---
+
+## User Stories
+
+### 1. **Création d'une Équipe de 11 Joueurs**
+- **En tant qu'utilisateur** : Je souhaite pouvoir ajouter des joueurs à ma formation via un formulaire dynamique.
+- **Critères d’acceptation** :
+  - Les joueurs peuvent être ajoutés via un formulaire avec des champs requis.
+  - Les joueurs ajoutés peuvent être modifiés ou supprimés.
+
+---
+
+## Modalités Pédagogiques
+- **Travail** : Individuel.
+- **Durée de travail** : ? jours.
+- **Lancement du brief** : 25/11/2024 à 09:00 AM.
+- **Date limite de soumission** : 29/11/2024 à 23:59 PM.
+
+---
+
+## Livrables
+1. **Scrum Board** avec toutes les User Stories.
+2. **Repository GitHub** :
+   - Le code source du site web.
+   - Fichier **README.md** (ce document).
+
+
+---
+
+## Critères de Performance
+- Interface utilisateur intuitive et réactive.
+- Validation des champs efficace et fiable.
+- Changement dynamique de la formation sans rechargement de la page.
+- Gestion robuste des joueurs dans l’équipe.

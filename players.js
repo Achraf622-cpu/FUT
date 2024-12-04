@@ -1,14 +1,9 @@
-// Fetch the players data
 async function fetchPlayers() {
   try {
-    const response = await fetch('players.json'); 
-    if (!response.ok) {
-      throw new Error('Failed to fetch players data');
-    }
+    const response = await fetch('players.json');
     return await response.json();
   } catch (error) {
     console.error('Error fetching players:', error);
-    return { players: [] };
   }
 }
 
@@ -86,4 +81,5 @@ async function renderPlayers() {
     displayPlayers(filteredPlayers);
   });
 }
+
 renderPlayers();

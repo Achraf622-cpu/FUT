@@ -1,6 +1,5 @@
 "use strict";
 
-// Fetch the players data
 function fetchPlayers() {
   var response;
   return regeneratorRuntime.async(function fetchPlayers$(_context) {
@@ -13,35 +12,23 @@ function fetchPlayers() {
 
         case 3:
           response = _context.sent;
-
-          if (response.ok) {
-            _context.next = 6;
-            break;
-          }
-
-          throw new Error('Failed to fetch players data');
-
-        case 6:
-          _context.next = 8;
+          _context.next = 6;
           return regeneratorRuntime.awrap(response.json());
 
-        case 8:
+        case 6:
           return _context.abrupt("return", _context.sent);
 
-        case 11:
-          _context.prev = 11;
+        case 9:
+          _context.prev = 9;
           _context.t0 = _context["catch"](0);
           console.error('Error fetching players:', _context.t0);
-          return _context.abrupt("return", {
-            players: []
-          });
 
-        case 15:
+        case 12:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 11]]);
+  }, null, null, [[0, 9]]);
 }
 
 function renderPlayers() {
